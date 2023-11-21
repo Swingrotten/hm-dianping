@@ -14,7 +14,6 @@ public class LoginInterceptor implements HandlerInterceptor {
             response.setStatus(401);
             return false;
         }
-
         // 有用户, 则放行
         return true;
     }
