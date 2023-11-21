@@ -7,9 +7,8 @@ import com.hmdp.dto.Result;
 import com.hmdp.entity.Shop;
 import com.hmdp.service.IShopService;
 import com.hmdp.utils.SystemConstants;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import javax.annotation.Resource;
 
 /**
  * <p>
@@ -23,8 +22,12 @@ import javax.annotation.Resource;
 @RequestMapping("/shop")
 public class ShopController {
 
-    @Resource
     public IShopService shopService;
+
+    @Autowired
+    public ShopController(IShopService shopService) {
+        this.shopService = shopService;
+    }
 
     /**
      * 根据id查询商铺信息
@@ -33,7 +36,8 @@ public class ShopController {
      */
     @GetMapping("/{id}")
     public Result queryShopById(@PathVariable("id") Long id) {
-        return Result.ok(shopService.getById(id));
+
+        return shopService.queryShopById(id);
     }
 
     /**
