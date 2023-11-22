@@ -1,6 +1,6 @@
 package com.hmdp.service.impl;
 
-import cn.hutool.core.util.StrUtil;
+import cn.hutool.core.text.CharSequenceUtil;
 import cn.hutool.json.JSONUtil;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.hmdp.dto.Result;
@@ -39,7 +39,7 @@ public class ShopTypeServiceImpl extends ServiceImpl<ShopTypeMapper, ShopType> i
         String shopTypeJson = stringRedisTemplate.opsForValue().get(CACHE_SHOP_TYPE_KEY);
 
         //2. 判断是否存在
-        if(StrUtil.isNotBlank(shopTypeJson)){
+        if(CharSequenceUtil.isNotBlank(shopTypeJson)){
             //3. 如果存在,则返回
             List<ShopType> shopTypes = JSONUtil.toList(shopTypeJson, ShopType.class);
             return Result.ok(shopTypes);
