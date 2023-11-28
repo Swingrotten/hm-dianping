@@ -147,7 +147,8 @@ public class CacheClient{
     }
 
     /**
-     *
+     * 根据指定的key查询缓存，并反序列化为指定类型，利用缓存空值的方式解决缓存穿透问题
+     * 加入互斥锁
      */
     public <T, ID> T queryWithMutex(
             String keyPrefix, ID id, Class<T> type, Function<ID, T> dbFallback, Long time, TimeUnit unit) {
