@@ -32,7 +32,7 @@ public class RedisIdWorker {
 
     private final StringRedisTemplate stringRedisTemplate;
 
-    private long nextId(String keyPrefix){
+    public long nextId(String keyPrefix){
         //1. 生成时间戳
         LocalDateTime now = LocalDateTime.now();
         long nowSecond = now.toEpochSecond(ZoneOffset.UTC);
