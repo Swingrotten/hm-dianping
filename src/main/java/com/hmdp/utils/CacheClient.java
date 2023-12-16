@@ -23,6 +23,7 @@ import static com.hmdp.utils.RedisConstants.CACHE_NULL_TTL;
 @RequiredArgsConstructor
 public class CacheClient{
 
+
     private final StringRedisTemplate stringRedisTemplate;
 
     private static final ExecutorService CACHE_REBUILD_EXECUTOR = Executors.newFixedThreadPool(10);

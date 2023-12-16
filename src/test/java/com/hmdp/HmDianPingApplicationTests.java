@@ -17,18 +17,23 @@ class HmDianPingApplicationTests {
     @Resource
     private ShopServiceImpl shopService;
     @Resource
-    private CacheClient cacheClientl;
+    private CacheClient cacheClient;
 
 
     @Test
     public void testSaveShop()  {
         Shop shop = shopService.getById(1L);
-        cacheClientl.setWithLogicalExpire(CACHE_SHOP_KEY+1,shop,10L, TimeUnit.SECONDS);
+        cacheClient.setWithLogicalExpire(CACHE_SHOP_KEY+1,shop,10L, TimeUnit.SECONDS);
     }
 
     @Test
     public void test(){
         Shop shop = shopService.getById(1L);
-        cacheClientl.setWithLogicalExpire(CACHE_SHOP_KEY,shop,10L, TimeUnit.SECONDS);
+        cacheClient.setWithLogicalExpire(CACHE_SHOP_KEY,shop,10L, TimeUnit.SECONDS);
+    }
+
+    @Test
+    void test2(){
+        shopService.saveShop2Redis(4L,10L);
     }
 }
